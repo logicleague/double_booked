@@ -13,7 +13,9 @@ Gem::Specification.new do |s|
   s.summary     = ""
   s.description = ""
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] +
+            ["MIT-LICENSE", "Rakefile", "README.rdoc",
+             "lib/generators/accountable_migration/accountable_migration_generator.rb"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3"
