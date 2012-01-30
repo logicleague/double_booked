@@ -7,16 +7,16 @@ require "accountable/version"
 Gem::Specification.new do |s|
   s.name        = "accountable"
   s.version     = Accountable::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Accountable."
-  s.description = "TODO: Description of Accountable."
+  s.authors     = ["Jay McAliley"]
+  s.email       = ["jay.mcaliley@gmail.com"]
+  s.homepage    = ""
+  s.summary     = ""
+  s.description = ""
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.1.3"
+  s.add_dependency "rails", "~> 3"
 
   s.add_development_dependency "sqlite3"
 end
