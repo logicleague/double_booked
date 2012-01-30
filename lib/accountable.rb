@@ -1,0 +1,2 @@
+module Accountable
+end

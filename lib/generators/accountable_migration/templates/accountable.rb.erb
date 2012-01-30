@@ -1,0 +1,49 @@
+class CreateAccountableModels < ActiveRecord::Migration
+  def self.up
+    create_table :accounts do |t|
+      t.string :type
+      t.string :name
+      t.references :owner, :polymorphic => true, :references => nil
+    end
+    create_table :account_joins do |t|
+      t.integer :detail_account_id, :references => :accounts
+      t.integer :summary_account_id, :references => :accounts
+    end
+    create_table :balances do |t|
+      t.integer :account_id
+      t.datetime :evaluated_at
+      t.decimal :balance, :precision => 14, :scale => 2
+    end
+    create_table :transactions do |t|
+      t.string :type
+      t.string :description
+      t.datetime :transaction_date
+      t.references :auxilliary_model, :polymorphic => true, :references => nil
+      t.timestamps
+    end
+    create_table :entries do |t|
+      t.string :type
+      t.integer :detail_account_id, :references => :accounts
+      t.references :transaction
+      t.decimal :amount, :precision => 14, :scale => 2
+    end
+    create_table :invoices do |t|
+      t.integer :buyer_account_id, :references => :accounts
+      t.integer :seller_account_id, :references => :accounts
+      t.boolean :closed, :default => false
+    end
+    create_table :invoice_lines do |t|
+      t.references :invoice
+      t.integer :line_item_id, :references => :entries
+    end
+  end
+
+  def self.down
+    drop_table :invoice_lines
+    drop_table :invoices
+    drop_table :entries
+    drop_table :transactions
+    drop_table :balances
+    drop_table :accounts
+  end
+end

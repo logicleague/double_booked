@@ -1,0 +1,16 @@
+detail_one:
+  id: 1
+  name: first detail account
+  type: DetailAccount
+detail_two:
+  id: 2
+  name: second detail account
+  type: DetailAccount
+detail_three:
+  id: 3
+  name: third detail account
+  type: DetailAccount
+summary:
+  id: 4
+  name: summary account
+  type: SummaryAccount

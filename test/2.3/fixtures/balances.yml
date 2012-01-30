@@ -1,0 +1,5 @@
+two:
+  id: 1
+  account_id: 2
+  balance: 4.00
+  evaluated_at: <%= 2.months.ago.to_s :db %>

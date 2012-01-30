@@ -1,0 +1,3 @@
+= Accountable
+
+A Rails engine for managing accounts and transactions.
