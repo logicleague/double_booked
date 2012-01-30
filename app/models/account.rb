@@ -2,8 +2,12 @@ class Account < ActiveRecord::Base
   has_many :balances
   validates_presence_of :name
 
+  class << self
+    attr_accessor :owner_type
+  end
+
   def self.owned_by(klass)
-    @@owner_type = klass.to_s.classify.constantize
+    @owner_type = klass.to_s.classify.constantize
     belongs_to :owner, :polymorphic => true
     validate :check_owner_type
   end
@@ -20,8 +24,8 @@ class Account < ActiveRecord::Base
 
 private
   def check_owner_type
-    errors.add_to_base "owner must be an #{@@owner_type}" if
-      @@owner_type and !(owner.is_a? @@owner_type)
+    errors.add_to_base "owner must be an #{self.class.owner_type}" if
+      self.class.owner_type and !(owner.is_a? self.class.owner_type)
   end
 
 end
