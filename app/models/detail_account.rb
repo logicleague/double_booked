@@ -5,8 +5,8 @@ class DetailAccount < Account
   has_many :credits
 
   def transfer_to(recipient, amount, args = {})
-    args.merge!( :from_account => self,
-                 :to_account => recipient,
+    args.merge!( :account_from => self,
+                 :account_to => recipient,
                  :amount => amount )
     Transaction.create! args
   end
