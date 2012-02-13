@@ -59,6 +59,6 @@ private
 
   def sufficient_funds
     sufficient = account_from && account_from.current_balance >= amount
-    errors.add_to_account_from "has insufficient funds" unless sufficient
+    errors.add_to_base "Insufficient funds in debit account" unless sufficient
   end
 end
