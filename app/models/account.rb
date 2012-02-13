@@ -21,6 +21,10 @@ class Account < ActiveRecord::Base
                           :order => "evaluated_at DESC"
   end
 
+  def current_balance
+    balance_at(Time.now).balance
+  end
+
 private
   def check_owner_type
     errors.add_to_base "owner must be an #{self.class.owner_type}" if

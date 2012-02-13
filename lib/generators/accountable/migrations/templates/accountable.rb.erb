@@ -27,6 +27,7 @@ class CreateAccountableModels < ActiveRecord::Migration
       t.string :description
       t.datetime :transaction_date
       t.references :auxilliary_model, :polymorphic => true
+      t.boolean :require_funds
       t.timestamps
     end
     add_index :transactions, :transaction_date

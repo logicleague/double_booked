@@ -6,6 +6,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :auxilliary_model, :polymorphic => true
 
   validates_presence_of :description, :account_from, :account_to, :amount
+  validate :sufficient_funds, :if => :require_funds?
 
   attr_accessor :account_from, :account_to, :amount
 
@@ -56,4 +57,8 @@ private
     completed?
   end
 
+  def sufficient_funds
+    sufficient = account_from && account_from.current_balance >= amount
+    errors.add_to_account_from "has insufficient funds" unless sufficient
+  end
 end
