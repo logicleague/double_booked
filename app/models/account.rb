@@ -1,6 +1,5 @@
 class Account < ActiveRecord::Base
   has_many :balances
-  validates_presence_of :name
 
   class << self
     attr_accessor :owner_type
