@@ -1,3 +1,8 @@
 = Accountable
 
 A Rails engine for managing accounts and transactions.
+
+= TODO
+* Convert tests to rspec
+  * The test/dummy directory contains a dummy Rails 3 app and rspec tests (some of these files are just copied from TestUnit tests).
+  * The test/2.3 directory contains the original test suite used in a Rails 2.3 app, for reference.
