@@ -1,3 +1,6 @@
 source :rubygems
+gem 'rails'
+gem 'sqlite3'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
+gem 'accountable', :path => File.expand_path(__FILE__ + '/../../../')
