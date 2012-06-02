@@ -3,7 +3,7 @@ class Balance < ActiveRecord::Base
   validates_presence_of :account, :evaluated_at, :balance
 
   def balance
-    self.balance ||= calculate_balance
+    read_attribute[:balance] || self.balance = calculate_balance
   end
 
   def calculate_balance
