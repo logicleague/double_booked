@@ -10,7 +10,11 @@ class BlankTransaction
     args.merge!( :account_from => account_from,
                  :account_to => account_to,
                  :amount => amount )
-    Transaction.create! args
+    transaction = Transaction.new
+    tranaction.account_from = args[:account_from]
+    tranaction.account_to = args[:account_to]
+    tranaction.amount = args[:amount]
+    transaction.save!
   end
 
 end
