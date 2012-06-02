@@ -14,7 +14,11 @@ class Account < ActiveRecord::Base
 
   def balance_at(date)
     balance = Balance.find_by_account_id_and_evaluated_at(id, date)
-    balance ||= Balance.new(:account => self, :evaluated_at => date)
+    if balance.nil?
+      balance = Balance.new
+      balance.account = self
+      balance.evaluated_at = date
+    end
   end
 
   def balance_before(date)

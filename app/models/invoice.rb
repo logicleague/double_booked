@@ -9,10 +9,13 @@ class Invoice < ActiveRecord::Base
 
   def self.build(entries)
     accounts = check_accounts entries
-    invoice = Invoice.create! :buyer_account => accounts[:buyer],
-                              :seller_account => accounts[:seller]
+    invoice = Invoice.new
+    invoice.buyer_account = accounts[:buyer]
+    invoice.seller_account = accounts[:seller]
+    invoice.save!
     entries.each do |entry|
-      line = invoice.invoice_lines.create :line_item => entry
+      line = invoice.invoice_lines.new
+      line.line_item = entry
       line.save!
     end
     invoice.close
@@ -53,7 +56,13 @@ class Invoice < ActiveRecord::Base
                     :account_from => buyer_account,
                     :account_to => seller_account,
                     :amount => amount})
-    InvoicePayment.create! options
+    invoice_payment = InvoicePayment.new
+    invoice_payment.description = options[:description]
+    invoice_payment.auxilliary_model = options[:auxilliary_model]
+    invoice_payment.account_from = options[:account_from]
+    invoice_payment.account_to = options[:account_to]
+    invoice_payment.amount = options[:amount]
+    invoice_payment.save!
   end
 
   def formatted_id
