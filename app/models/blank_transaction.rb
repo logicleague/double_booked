@@ -14,6 +14,7 @@ class BlankTransaction
     transaction.account_from = args[:account_from]
     transaction.account_to = args[:account_to]
     transaction.amount = args[:amount]
+    transaction.description = args[:description]
     transaction.save!
   end
 
