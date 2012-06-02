@@ -11,9 +11,9 @@ class BlankTransaction
                  :account_to => account_to,
                  :amount => amount )
     transaction = Transaction.new
-    tranaction.account_from = args[:account_from]
-    tranaction.account_to = args[:account_to]
-    tranaction.amount = args[:amount]
+    transaction.account_from = args[:account_from]
+    transaction.account_to = args[:account_to]
+    transaction.amount = args[:amount]
     transaction.save!
   end
 
