@@ -19,6 +19,7 @@ class Account < ActiveRecord::Base
       balance.account = self
       balance.evaluated_at = date
     end
+    balance
   end
 
   def balance_before(date)
