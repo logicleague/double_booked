@@ -1,9 +1,10 @@
 class Balance < ActiveRecord::Base
   belongs_to :account
   validates_presence_of :account, :evaluated_at, :balance
+  before_create :set_balance
 
   def balance
-    read_attribute[:balance] || self.balance = calculate_balance
+    read_attribute(:balance) || set_balance
   end
 
   def calculate_balance
@@ -35,6 +36,10 @@ private
     else
      ["#{column} <= ?", evaluated_at]
     end
+  end
+
+  def set_balance
+    self.balance = calculate_balance
   end
 
 end
