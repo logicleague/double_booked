@@ -8,7 +8,7 @@ class Balance < ActiveRecord::Base
   end
 
   def calculate_balance
-    entries.inject(previous_balance) {|balance, entry| balance + entry.amount}
+    entries.inject(previous_balance) { |bal, entry| bal + entry.amount }
   end
 
   def previous
@@ -26,7 +26,7 @@ class Balance < ActiveRecord::Base
 private
   def entries
     account.entries.find(:all, :conditions => entry_conditions,
-                                 :joins => :transaction)
+                               :joins => :transaction)
   end
 
   def entry_conditions
