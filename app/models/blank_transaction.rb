@@ -17,5 +17,4 @@ class BlankTransaction
     transaction.description = args[:description]
     transaction.save!
   end
-
 end
