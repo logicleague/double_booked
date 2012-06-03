@@ -33,7 +33,7 @@ class Account < ActiveRecord::Base
 
 private
   def check_owner_type
-    errors.add_to_base "owner must be an #{self.class.owner_type}" if
+    errors.add(:base, "owner must be an #{self.class.owner_type}") if
       self.class.owner_type and !(owner.is_a? self.class.owner_type)
   end
 

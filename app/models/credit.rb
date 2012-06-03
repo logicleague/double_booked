@@ -2,6 +2,7 @@ class Credit < Entry
   validate :require_debit
   validate :sign_convention
   validate :conservation_principle
+  attr_accessible :amount, :detail_account
 
   def sign_convention
     errors.add(:base, "Credit must be non-negative") unless amount >= 0
