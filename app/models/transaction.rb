@@ -51,8 +51,15 @@ private
     # to our Transaction model)
     transaction do
       super
-      create_debit :amount => -amount, :detail_account => account_from
-      create_credit :amount => amount, :detail_account => account_to
+      debit = Debit.new
+      debit.amount = -amount
+      debit.detail_account = account_from
+      debit.save!
+
+      credit = Credit.new
+      credit.amount = amount
+      credit.detail_account = account_to
+      credit.save!
     end
     completed?
   end
