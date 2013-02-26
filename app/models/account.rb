@@ -34,6 +34,7 @@ private
 
   def no_direct_subclass
     # FIXME -- refactor Account as a mixin instead of using STI
+    # consider using abstract_class for DetailAccount & SummaryAccount
     msg = "Record must not be an Account or a direct subclass of it. " +
           "Subclass the DetailAccount or SummaryAccount class instead."
     direct_subclass = self.class.superclass == Account || self.class == Account

@@ -26,7 +26,7 @@ describe InvoiceLine do
     end
 
     it "should require the line item source to be identical to the invoice recipient" do
-      invoice_line.line_item.detail_account = create(:detail_account)
+      invoice_line.line_item.detail_account = create(:foo_account)
       invoice_line.should_not be_valid
     end
 

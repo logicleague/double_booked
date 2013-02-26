@@ -1,0 +1,2 @@
+class FooBarAccount < SummaryAccount
+end

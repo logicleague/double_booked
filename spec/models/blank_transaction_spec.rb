@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe BlankTransaction do
 
-  let(:from){ create(:detail_account) }
-  let(:to){ create(:detail_account) }
+  let(:from){ create(:foo_account) }
+  let(:to){ create(:bar_account) }
 
   it "should exhibit the expected signature for use" do
     lambda{ 

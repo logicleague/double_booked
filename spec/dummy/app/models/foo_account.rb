@@ -1,0 +1,2 @@
+class FooAccount < DetailAccount
+end
