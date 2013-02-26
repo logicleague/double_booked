@@ -1,2 +1,2 @@
-# Accountable::Engine.routes.draw do
+# DoubleBook::Engine.routes.draw do
 # end

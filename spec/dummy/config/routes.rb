@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount Accountable::Engine => "/accountable"
+  mount DoubleBook::Engine => "/double_book"
 end
