@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = DoubleBooked::VERSION
   s.authors     = ["Jay McAliley", "John McAliley", "Jim Van Fleet"]
   s.email       = ["jay@logicleague.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/logicleague/double_booked"
   s.summary     = "Flexible double-entry accounting engine for Rails apps"
   s.description = "Double-entry accounting issues credits and debits, calculates balances, allows for summary accounts and more."
 
