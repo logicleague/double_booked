@@ -7,7 +7,7 @@ require "double_book/version"
 Gem::Specification.new do |s|
   s.name        = "double_book"
   s.version     = DoubleBook::VERSION
-  s.authors     = ["Jay McAliley", "Jim Van Fleet"]
+  s.authors     = ["Jay McAliley", "John McAliley", "Jim Van Fleet"]
   s.email       = ["jay@logicleague.com"]
   s.homepage    = ""
   s.summary     = "Flexible double-entry accounting engine for Rails apps"
