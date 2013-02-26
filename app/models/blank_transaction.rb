@@ -1,5 +1,5 @@
 class BlankTransaction
-  attr_accessor :amount, :account_from
+  attr_accessor :amount, :account_from, :account_to
 
   def initialize(amount, account_from)
     @amount = amount
@@ -7,14 +7,11 @@ class BlankTransaction
   end
 
   def to(account_to, args = {})
-    args.merge!( :account_from => account_from,
-                 :account_to => account_to,
-                 :amount => amount )
-    transaction = Transaction.new
-    transaction.account_from = args[:account_from]
-    transaction.account_to = args[:account_to]
-    transaction.amount = args[:amount]
-    transaction.description = args[:description]
-    transaction.save!
+    defaults = {
+      :account_from => @account_from,
+      :account_to => account_to,
+      :amount => @amount
+    }
+    Transaction.create args.merge(defaults) 
   end
 end

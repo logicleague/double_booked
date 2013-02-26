@@ -1,11 +1,12 @@
 class Credit < Entry
+
   validate :require_debit
   validate :sign_convention
   validate :conservation_principle
   attr_accessible :amount, :detail_account
 
   def sign_convention
-    errors.add(:base, "Credit must be non-negative") unless amount >= 0
+    errors.add(:amount, "Credit must be non-negative") unless amount >= 0
   end
 
   def debit
@@ -20,4 +21,5 @@ class Credit < Entry
     errors.add(:base, "Credit and debit amounts must add up to zero") unless
       (debit.nil? or amount + debit.amount == 0)
   end
+
 end

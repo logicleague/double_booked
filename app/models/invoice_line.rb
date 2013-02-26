@@ -13,11 +13,13 @@ class InvoiceLine < ActiveRecord::Base
 private
 
   def open_invoice
-    errors.add_to_invoice "is closed" unless invoice(true).open?
+    return true unless invoice # another validation will catch
+    errors.add(:invoice, "is closed") unless invoice(true).open?
   end
 
   def correct_account
-    errors.add_to_line_item "is applied to the wrong account" unless
+    return true unless invoice && line_item # another validation will catch
+    errors.add(:base, "Line item is applied to the wrong account") unless
       line_item.detail_account == invoice.buyer_account
   end
 

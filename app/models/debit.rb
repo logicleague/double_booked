@@ -1,4 +1,5 @@
 class Debit < Entry
+
   validate :sign_convention
   has_one :credit, :through => :transaction
   attr_accessible :amount, :detail_account

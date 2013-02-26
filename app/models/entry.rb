@@ -1,4 +1,5 @@
 class Entry < ActiveRecord::Base
+
   belongs_to :detail_account
   belongs_to :transaction
   has_one :invoice_line, :as => :line_item
