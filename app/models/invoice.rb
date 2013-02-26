@@ -9,25 +9,22 @@ class Invoice < ActiveRecord::Base
 
   def self.build(entries)
     accounts = check_accounts entries
-    invoice = Invoice.new
-    invoice.buyer_account = accounts[:buyer]
-    invoice.seller_account = accounts[:seller]
-    invoice.save!
+    invoice = Invoice.create! :buyer_account => accounts[:buyer],
+                              :seller_account => accounts[:seller]
     entries.each do |entry|
-      line = invoice.invoice_lines.new
-      line.line_item = entry
+      line = invoice.invoice_lines.create :line_item => entry
       line.save!
     end
     invoice.close
+    invoice
   end
 
   def close
-    self.open = false
-    save!
+    update_attribute(:closed, true)
   end
 
-  def closed?
-    !open
+  def open?
+    !closed?
   end
 
   def paid?
@@ -56,13 +53,7 @@ class Invoice < ActiveRecord::Base
                     :account_from => buyer_account,
                     :account_to => seller_account,
                     :amount => amount})
-    invoice_payment = InvoicePayment.new
-    invoice_payment.description = options[:description]
-    invoice_payment.auxilliary_model = options[:auxilliary_model]
-    invoice_payment.account_from = options[:account_from]
-    invoice_payment.account_to = options[:account_to]
-    invoice_payment.amount = options[:amount]
-    invoice_payment.save!
+    InvoicePayment.create! options
   end
 
   def formatted_id
@@ -71,11 +62,11 @@ class Invoice < ActiveRecord::Base
 
 private
   def self.check_accounts(entries)
-    accounts = {}
+    accounts, last_accounts = {}, {}
     entries.each do |entry|
       accounts = get_accounts entry
       raise ArgumentError, "All entries must involve the same accounts" unless
-        accounts = last_accounts or last_accounts.nil?
+        last_accounts.empty? || accounts == last_accounts
       last_accounts = accounts
     end
     accounts
@@ -83,8 +74,8 @@ private
 
   def self.get_accounts(entry)
     buyer = entry.detail_account
-    seller = entry.transaction.debit_account
-    seller = entry.transaction.credit_account if seller == buyer
+    seller = entry.transaction.debited_account
+    seller = entry.transaction.credited_account if seller == buyer
     {:seller => seller, :buyer => buyer}
   end
 

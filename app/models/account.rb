@@ -13,13 +13,8 @@ class Account < ActiveRecord::Base
   end
 
   def balance_at(date)
-    balance = Balance.find_by_account_id_and_evaluated_at(id, date)
-    if balance.nil?
-      balance = Balance.new
-      balance.account = self
-      balance.evaluated_at = date
-    end
-    balance
+    balance = balances.where(:evaluated_at => date).first
+    balance ||= Balance.new(:account => self, :evaluated_at => date)
   end
 
   def balance_before(date)
@@ -39,8 +34,8 @@ private
 
   def no_direct_subclass
     # FIXME -- refactor Account as a mixin instead of using STI
-    msg = "Record must not be an Account of a direct subclass of it. " +
-          "Use the DetailAccount or SummaryAccount class instead."
+    msg = "Record must not be an Account or a direct subclass of it. " +
+          "Subclass the DetailAccount or SummaryAccount class instead."
     direct_subclass = self.class.superclass == Account || self.class == Account
     errors.add :base, msg if direct_subclass
   end

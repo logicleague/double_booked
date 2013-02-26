@@ -1,9 +1,16 @@
 = Accountable
 
-A Rails engine for managing accounts and transactions.
+This project rocks and uses MIT-LICENSE.
 
-= TODO
-* Convert tests to rspec
-  * The test/dummy directory contains a dummy Rails 3 app and rspec tests (some of these files are just copied from TestUnit tests).
-  * The test/2.3 directory contains the original test suite used in a Rails 2.3 app, for reference.
-  * Add shoulda_matchers to test associations and validations
+== Usage
+
+The core of accountable are Accounts and Transactions.  The concept of an account is probably familiar to most developers-- think of your checking or savings accounts.  A transaction links two accounts together, posting a debit to one, and a credit to another.  The credits and debits must be equal in amount.  That's it!
+
+The system also includes invoices, payments, and the ability to mark any eligible transaction as payment for an invoice, as long as the buyer's account is involved in the transaction.
+
+== Installation
+
+Gemfile
+bundle install
+rails g accountable:migrations
+rake db:migrate
