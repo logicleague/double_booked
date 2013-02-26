@@ -9,7 +9,7 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 Bundler.require
-require "double_book"
+require "double_booked"
 
 module Dummy
   class Application < Rails::Application

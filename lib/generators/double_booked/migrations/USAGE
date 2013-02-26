@@ -2,7 +2,7 @@ Description:
     Explain the generator
 
 Example:
-    ./script/generate double_book Thing
+    ./script/generate double_booked Thing
 
     This will create:
         what/will/it/create

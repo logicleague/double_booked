@@ -1,4 +1,4 @@
-require "double_book/engine"
+require "double_booked/engine"
 
-module DoubleBook
+module DoubleBooked
 end

@@ -1,12 +1,12 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "double_book/version"
+require "double_booked/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "double_book"
-  s.version     = DoubleBook::VERSION
+  s.name        = "double_booked"
+  s.version     = DoubleBooked::VERSION
   s.authors     = ["Jay McAliley", "John McAliley", "Jim Van Fleet"]
   s.email       = ["jay@logicleague.com"]
   s.homepage    = ""

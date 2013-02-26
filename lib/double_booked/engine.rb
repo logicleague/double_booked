@@ -1,4 +1,4 @@
-module DoubleBook
+module DoubleBooked
   class Engine < ::Rails::Engine
     
   end

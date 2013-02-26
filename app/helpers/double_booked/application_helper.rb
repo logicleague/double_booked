@@ -1,4 +1,4 @@
-module DoubleBook
+module DoubleBooked
   module ApplicationHelper
   end
 end

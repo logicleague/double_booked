@@ -1,4 +1,4 @@
-class CreateDoubleBookModels < ActiveRecord::Migration
+class CreateDoubleBookedModels < ActiveRecord::Migration
   def self.up
 
     create_table :accounts do |t|

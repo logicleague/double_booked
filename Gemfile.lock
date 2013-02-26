@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    double_book (0.0.1)
+    double_booked (0.0.1)
       rails (>= 3.0.0)
 
 GEM
@@ -130,7 +130,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  double_book!
+  double_booked!
   factory_girl (~> 3.0.0)
   factory_girl_rails (~> 3.0.0)
   guard (~> 1.0)

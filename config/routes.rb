@@ -1,2 +1,2 @@
-# DoubleBook::Engine.routes.draw do
+# DoubleBooked::Engine.routes.draw do
 # end

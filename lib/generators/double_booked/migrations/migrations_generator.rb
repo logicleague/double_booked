@@ -1,7 +1,7 @@
 require 'rails/generators'
 require 'rails/generators/migration'
 
-module DoubleBook
+module DoubleBooked
   class MigrationsGenerator < Rails::Generators::Base
     include Rails::Generators::Migration
 
@@ -16,7 +16,7 @@ module DoubleBook
     desc "Creates migrations."
     
     def create_migrations
-      migration_template "double_book.rb.erb", "db/migrate/create_double_book.rb"
+      migration_template "double_booked.rb.erb", "db/migrate/create_double_booked.rb"
     end
   end
 end
