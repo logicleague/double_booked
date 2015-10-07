@@ -67,7 +67,7 @@ bob = User.find_by_name("Bob")
 bob.token_account.current_balance
 # => 0
 
-jack.token_account.transfer(10).to bob.token_account
+jack.token_account.transfer(2).to bob.token_account
 
 jack.token_account.current_balance
 # => 8
